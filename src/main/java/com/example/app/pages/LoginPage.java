@@ -8,6 +8,7 @@ import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
 
 public class LoginPage extends BasePageObject {
+  By toastFailedLogin = MobileBy.xpath("//android.widget.Toast[contains(@text,'Login failed')]");
 
   public void inputUsername(String username) {
 //    By locator = MobileBy.id("username");
@@ -32,4 +33,11 @@ public class LoginPage extends BasePageObject {
     click(MobileBy.id("login"));
   }
 
+  public void longPressBtnLogin() {
+    longPress(MobileBy.id("login"));
+  }
+
+  public void toastFailedLogin() {
+    toast(toastFailedLogin);
+  }
 }

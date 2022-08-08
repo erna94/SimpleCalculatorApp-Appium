@@ -1,6 +1,7 @@
 package com.example.steps;
 
 import com.example.BaseTest;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -20,12 +21,12 @@ public class LoginPageSteps extends BaseTest {
     loginPage.inputUsername(username);
   }
 
-  @When("user input password {string}")
+  @And("user input password {string}")
   public void userInputPassword(String password) {
     loginPage.inputPassword(password);
   }
 
-  @When("user click button login")
+  @And("user click button login")
   public void userClickButtonLogin() {
     loginPage.clickLoginBtn();
   }
@@ -40,5 +41,16 @@ public class LoginPageSteps extends BaseTest {
     Assertions.assertTrue(isDisplayed);
     //Hamcrest
     MatcherAssert.assertThat(isDisplayed, Matchers.equalTo(true));
+  }
+
+  //tambahan
+  @And("long press on button login")
+  public void longPressOnButtonLogin() {
+    loginPage.longPressBtnLogin();
+  }
+
+  @Then("toast should appear with text Login Failed")
+  public void toastShouldAppearWithTextLoginFailed() {
+    loginPage.toastFailedLogin();
   }
 }
